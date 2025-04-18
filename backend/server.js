@@ -21,13 +21,6 @@ const __dirname=path.resolve();
 app.use(express.json());  // allow us to json data in req body
 app.use("/api/products",productRoutes);
 
-if(process.env.NODE_ENV==="production"){
-    app.use(express.static(path.join(__dirname,"/frontend/dist")));
-    app.get("*", (req,res)=>{
-        res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"));
-    })
-}
-
 
 // Log the value of MONGO_URI environment variable (if set in .env)
 console.log("Mongo URI:", process.env.MONGO_URI);
